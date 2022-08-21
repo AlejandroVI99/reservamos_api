@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Api::V1::Destinations", type: :request do
+RSpec.describe 'Api::V1::Destinations', type: :request do
   describe 'checkout connection to Reservamos API' do
     it 'Return correctly Status and data' do |_variable|
       city = 'mon'
@@ -27,6 +29,18 @@ RSpec.describe "Api::V1::Destinations", type: :request do
       expect(result).to include(a_hash_including('timezone'))
       expect(result).to include(a_hash_including('lat'))
       expect(result).to include(a_hash_including('lon'))
+    end
+  end
+
+  describe 'GET /api/v1/destinations' do
+    it 'check status respond' do |_variable|
+      get '/api/v1/destinations'
+      expect(response).to have_http_status(200)
+    end
+
+    it 'check if body include the name of the city ' do |_variable|
+      get '/api/v1/destinations?city=monterrey'
+      expect(response.body).to include 'Monterrey'
     end
   end
 end
