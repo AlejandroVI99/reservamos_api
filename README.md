@@ -4,6 +4,8 @@
 
 * Ruby version 3.1.0
 
+* Rails 7.0.3
+
 Problem: The main goal is to create an endpoint which could return, from a destination that Reservamos offers, the minimum and maximum temperature of the following 7 days.
 
 Solution: An endpoint was created which would consume the APIs of Open Weather and Reservamos in order to have the destinations it offers and from these, obtain the latitude and longitude of the cities and be able to use them to know their temperature.
