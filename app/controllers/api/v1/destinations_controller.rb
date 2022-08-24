@@ -27,6 +27,6 @@ class Api::V1::DestinationsController < ApplicationController
       result = JSON.parse(response.to_s)
       city.merge!('daily' => result['daily'])
     end
-    cities
+    cities = cities.sort_by{|x| x['daily'][0]['temp']['min']}
   end
 end
